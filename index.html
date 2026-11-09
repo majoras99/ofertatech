@@ -1,0 +1,268 @@
+index.html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OfertaTech | Ofertas de Tecnologia</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #080d18;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #101a2d;
+  padding: 22px 16px;
+  border-bottom: 1px solid #243654;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: bold;
+  color: #398bff;
+}
+
+.logo span { color: white; }
+
+header p {
+  color: #aab9d0;
+  font-size: 13px;
+  margin-top: 7px;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 22px 16px;
+}
+
+h1 {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: #9eacc2;
+  margin-bottom: 22px;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #304563;
+  background: #111d31;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 18px;
+}
+
+.categories {
+  display: flex;
+  gap: 9px;
+  overflow-x: auto;
+  padding-bottom: 18px;
+}
+
+.categories button {
+  flex-shrink: 0;
+  background: #17253c;
+  color: #cbd9ed;
+  border: 1px solid #304563;
+  padding: 10px 15px;
+  border-radius: 20px;
+}
+
+.categories button.active {
+  background: #1769e8;
+  color: white;
+  border-color: #1769e8;
+}
+
+h2 {
+  font-size: 20px;
+  margin: 12px 0 18px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 13px;
+}
+
+.card {
+  background: #111d31;
+  border: 1px solid #263a59;
+  border-radius: 13px;
+  padding: 12px;
+}
+
+.product-icon {
+  background: #1a2c49;
+  height: 115px;
+  border-radius: 9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+  margin-bottom: 12px;
+}
+
+.card small {
+  color: #68a5ff;
+  font-size: 11px;
+}
+
+.card h3 {
+  font-size: 15px;
+  margin: 7px 0;
+}
+
+.price {
+  color: #42d99a;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.store {
+  color: #9eacc2;
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+
+.card a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  background: #1769e8;
+  color: white;
+  padding: 11px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  color: #8292aa;
+  padding: 35px 15px;
+  font-size: 12px;
+}
+
+@media (min-width: 650px) {
+  .products { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">Oferta<span>Tech</span></div>
+    <p>Tecnologia com preços que valem a pena.</p>
+  </div>
+</header>
+
+<main>
+  <h1>Encontre sua próxima oferta!</h1>
+  <p class="subtitle">Eletrônicos e acessórios selecionados para você.</p>
+
+  <input
+    type="search"
+    id="search"
+    placeholder="Pesquisar produtos..."
+  >
+
+  <div class="categories">
+    <button class="active" data-category="todos">Todos</button>
+    <button data-category="celulares">Celulares</button>
+    <button data-category="fones">Fones</button>
+    <button data-category="acessorios">Acessórios</button>
+  </div>
+
+  <h2>🔥 Ofertas em destaque</h2>
+
+  <div class="products" id="products">
+
+    <div class="card" data-category="celulares">
+      <div class="product-icon">📱</div>
+      <small>CELULARES</small>
+      <h3>Smartphone exemplo</h3>
+      <div class="price">R$ 899,00</div>
+      <p class="store">Loja: Shopee</p>
+      <a href="#" class="offer">Oferta em breve</a>
+    </div>
+
+    <div class="card" data-category="fones">
+      <div class="product-icon">🎧</div>
+      <small>FONES</small>
+      <h3>Fone Bluetooth exemplo</h3>
+      <div class="price">R$ 79,90</div>
+      <p class="store">Loja: Mercado Livre</p>
+      <a href="#" class="offer">Oferta em breve</a>
+    </div>
+
+    <div class="card" data-category="acessorios">
+      <div class="product-icon">🔋</div>
+      <small>ACESSÓRIOS</small>
+      <h3>Carregador exemplo</h3>
+      <div class="price">R$ 39,90</div>
+      <p class="store">Loja: Shopee</p>
+      <a href="#" class="offer">Oferta em breve</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>OfertaTech © 2026</p>
+  <p>Preços ilustrativos para demonstração.</p>
+</footer>
+
+<script>
+const search = document.getElementById("search");
+const cards = document.querySelectorAll(".card");
+const buttons = document.querySelectorAll(".categories button");
+
+let category = "todos";
+
+function filterProducts() {
+  const term = search.value.toLowerCase();
+
+  cards.forEach(card => {
+    const matchesName = card.innerText.toLowerCase().includes(term);
+    const matchesCategory =
+      category === "todos" ||
+      card.dataset.category === category;
+
+    card.style.display =
+      matchesName && matchesCategory ? "" : "none";
+  });
+}
+
+search.addEventListener("input", filterProducts);
+
+buttons.forEach(button => {
+  button.addEventListener("click", () => {
+    buttons.forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
+    category = button.dataset.category;
+    filterProducts();
+  });
+});
+</script>
+
+</body>
+</html>
