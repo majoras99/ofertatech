@@ -5,202 +5,518 @@ index.html
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OfertaTech - Ofertas de Tecnologia</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#080d18;color:#fff;font-family:Arial,sans-serif}
-header{background:#101a2d;border-bottom:1px solid #263b5b;padding:20px 16px}
-.container{max-width:1100px;margin:auto}
-.logo{font-size:29px;font-weight:bold;color:#398bff}
-.logo span{color:white}
-header p{color:#9eacc2;font-size:13px;margin-top:6px}
-.hero{padding:28px 0 20px}
-.hero h1{font-size:27px;margin-bottom:10px}
-.hero p{color:#aab9d0;font-size:14px}
-main{max-width:1100px;margin:auto;padding:0 16px}
-.search{width:100%;padding:15px;background:#111d31;border:1px solid #304563;border-radius:10px;color:white;font-size:16px;margin:15px 0}
-.categories{display:flex;gap:9px;overflow-x:auto;padding:5px 0 20px}
-.categories button{background:#17253c;color:#cbd9ed;border:1px solid #304563;padding:11px 16px;border-radius:22px;white-space:nowrap}
-.categories button.active{background:#1769e8;color:white;border-color:#1769e8}
-.section-title{font-size:21px;margin:12px 0 18px}
-.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
-.card{background:#111d31;border:1px solid #263a59;border-radius:13px;padding:11px;overflow:hidden}
-.photo{width:100%;height:125px;object-fit:contain;background:#1a2c49;border-radius:9px;padding:8px}
-.tag{display:block;color:#68a5ff;font-size:11px;font-weight:bold;margin-top:12px}
-.card h3{font-size:15px;margin:7px 0;min-height:35px}
-.price{font-size:21px;font-weight:bold;color:#42d99a;margin:12px 0 5px}
-.store{font-size:12px;color:#aab9d0;margin-bottom:12px}
-.offer{display:block;text-align:center;background:#1769e8;color:white;padding:11px 5px;border-radius:8px;font-size:13px;font-weight:bold}
-.card .offer{background:#243650;color:#b7c6dc}
-.empty{display:none;color:#aab9d0;padding:25px;text-align:center}
-footer{text-align:center;color:#8292aa;padding:35px 15px;font-size:12px;line-height:1.8}
-@media(min-width:650px){.products{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:900px){.products{grid-template-columns:repeat(4,1fr)}}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #080d18;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: #101a2d;
+  padding: 25px 15px;
+  text-align: center;
+  border-bottom: 2px solid #1769e8;
+}
+
+header h1 {
+  color: #398bff;
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+header p {
+  color: #c5d2e5;
+  font-size: 14px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px 12px;
+}
+
+.intro {
+  text-align: center;
+  margin: 12px 0 20px;
+}
+
+.intro h2 {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.intro p {
+  color: #aab8cc;
+  font-size: 14px;
+}
+
+.search {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #263c5c;
+  border-radius: 9px;
+  background: #101a2d;
+  color: white;
+  font-size: 15px;
+  margin-bottom: 15px;
+  outline: none;
+}
+
+.search:focus {
+  border-color: #398bff;
+}
+
+.categories {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.categories button {
+  background: #101a2d;
+  color: #dce8f8;
+  border: 1px solid #263c5c;
+  border-radius: 20px;
+  padding: 9px 15px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.categories button.active,
+.categories button:hover {
+  background: #1769e8;
+  border-color: #398bff;
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.card {
+  background: #111d31;
+  border: 1px solid #1d304c;
+  border-radius: 11px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.photo {
+  height: 125px;
+  background: #0c1525;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+}
+
+.no-image::after {
+  content: "Imagem indisponível";
+  color: #9aabc2;
+  font-size: 12px;
+}
+
+.info {
+  padding: 11px;
+}
+
+.info h3 {
+  font-size: 14px;
+  line-height: 1.35;
+  min-height: 38px;
+  margin-bottom: 7px;
+}
+
+.type {
+  color: #91a8c7;
+  font-size: 11px;
+  margin-bottom: 7px;
+}
+
+.price {
+  color: #42d99a;
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 9px;
+}
+
+.merchant {
+  color: #9eb1ca;
+  font-size: 11px;
+  margin-bottom: 10px;
+}
+
+.offer {
+  display: block;
+  text-align: center;
+  background: #1769e8;
+  color: white;
+  padding: 9px 5px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.offer:hover {
+  background: #398bff;
+}
+
+.card .coming {
+  background: #253650;
+  color: #aab8cc;
+  cursor: default;
+}
+
+.empty {
+  display: none;
+  text-align: center;
+  color: #aab8cc;
+  padding: 30px 10px;
+}
+
+.note {
+  color: #91a0b5;
+  font-size: 11px;
+  text-align: center;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+footer {
+  background: #101a2d;
+  color: #91a0b5;
+  text-align: center;
+  padding: 20px 12px;
+  margin-top: 30px;
+  font-size: 12px;
+}
+
+@media (min-width: 650px) {
+  .products {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .photo {
+    height: 160px;
+  }
+}
+
+@media (min-width: 900px) {
+  .products {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
 </style>
 </head>
+
 <body>
 
 <header>
-<div class="container">
-<div class="logo">Oferta<span>Tech</span></div>
-<p>Tecnologia com preços que valem a pena.</p>
-</div>
+  <h1>OfertaTech</h1>
+  <p>Tecnologia com preços que valem a pena.</p>
 </header>
 
-<main>
-<section class="hero">
-<h1>Encontre sua próxima oferta!</h1>
-<p>Os eletrônicos que você procura em um só lugar.</p>
-</section>
+<main class="container">
 
-<input class="search" id="search" type="search"
-placeholder="🔎 Pesquisar celulares, fones, acessórios...">
+  <section class="intro">
+    <h2>Encontre sua próxima oferta!</h2>
+    <p>Eletrônicos e acessórios selecionados para você.</p>
+  </section>
 
-<div class="categories">
-<button class="active" data-category="todos">Todos</button>
-<button data-category="celulares">Celulares</button>
-<button data-category="fones">Fones</button>
-<button data-category="acessorios">Acessórios</button>
-<button data-category="informatica">Informática</button>
-</div>
+  <input
+    class="search"
+    id="search"
+    type="search"
+    placeholder="Pesquisar produtos..."
+  >
 
-<h2 class="section-title">🔥 Ofertas em destaque</h2>
+  <nav class="categories">
+    <button class="active" data-category="todos">Todos</button>
+    <button data-category="celulares">Celulares</button>
+    <button data-category="fones">Fones</button>
+    <button data-category="acessorios">Acessórios</button>
+    <button data-category="informatica">Informática</button>
+  </nav>
 
-<div class="products" id="products">
+  <section class="products" id="products"></section>
 
-<div class="card" data-category="celulares">
-<img class="photo" src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500" alt="Smartphone">
-<span class="tag">CELULARES</span>
-<h3>Smartphone exemplo</h3>
-<div class="price">R$ 899,00</div>
-<p class="store">Loja: Shopee</p>
-<span class="offer">Link em breve</span>
-</div>
+  <p class="empty" id="empty">
+    Nenhum produto encontrado.
+  </p>
 
-<div class="card" data-category="celulares">
-<img class="photo" src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500" alt="Celular">
-<span class="tag">CELULARES</span>
-<h3>Celular exemplo Pro</h3>
-<div class="price">R$ 1.499,00</div>
-<p class="store">Loja: Mercado Livre</p>
-<span class="offer">Link em breve</span>
-</div>
-
-<div class="card" data-category="fones">
-<img class="photo" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Fone de ouvido">
-<span class="tag">FONES</span>
-<h3>Fone Bluetooth</h3>
-<div class="price">R$ 79,90</div>
-<p class="store">Loja: Shopee</p>
-<span class="offer">Link em breve</span>
-</div>
-
-<div class="card" data-category="fones">
-<img class="photo" src="https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500" alt="Fone sem fio">
-<span class="tag">FONES</span>
-<h3>Fone sem fio Pro</h3>
-<div class="price">R$ 119,90</div>
-<p class="store">Loja: Mercado Livre</p>
-<span class="offer">Link em breve</span>
-</div>
-
-<div class="card" data-category="acessorios">
-<img class="photo" src="https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500" alt="Carregador">
-<span class="tag">ACESSÓRIOS</span>
-<h3>Carregador rápido</h3>
-<div class="price">R$ 39,90</div>
-<p class="store">Loja: Shopee</p>
-<span class="offer">Link em breve</span>
-</div>
-
-<div class="card" data-category="acessorios">
-<img class="photo" src="https://images.unsplash.com/photo-1609592806596-b43bada3f4a7?w=500" alt="Bateria portátil">
-<span class="tag">ACESSÓRIOS</span>
-<h3>Bateria portátil</h3>
-<div class="price">R$ 89,90</div>
-<p class="store">Loja: Shopee</p>
-<span class="offer">Link em breve</span>
-</div>
-
-<div class="card" data-category="acessorios">
-<img class="photo" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Relógio inteligente">
-<span class="tag">ACESSÓRIOS</span>
-<h3>Smartwatch exemplo</h3>
-<div class="price">R$ 149,90</div>
-<p class="store">Loja: Mercado Livre</p>
-<span class="offer">Link em breve</span>
-</div>
-
-<div class="card" data-category="acessorios">
-<img class="photo" src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500" alt="Acessório eletrônico">
-<span class="tag">ACESSÓRIOS</span>
-<h3>Acessório para celular</h3>
-<div class="price">R$ 29,90</div>
-<p class="store">Loja: Shopee</p>
-<span class="offer">Link em breve</span>
-</div>
-
-<div class="card" data-category="informatica">
-<img class="photo" src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500" alt="Notebook">
-<span class="tag">INFORMÁTICA</span>
-<h3>Notebook exemplo</h3>
-<div class="price">R$ 2.499,00</div>
-<p class="store">Loja: Mercado Livre</p>
-<span class="offer">Link em breve</span>
-</div>
-
-<div class="card" data-category="informatica">
-<img class="photo" src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500" alt="Teclado">
-<span class="tag">INFORMÁTICA</span>
-<h3>Teclado gamer</h3>
-<div class="price">R$ 99,90</div>
-<p class="store">Loja: Shopee</p>
-<span class="offer">Link em breve</span>
-</div>
-
-</div>
-
-<div class="empty" id="empty">Nenhum produto encontrado.</div>
+  <p class="note">
+    Preços de referência sujeitos a alterações nas lojas.
+    Confira o valor, o frete e o vendedor antes de comprar.
+    As imagens são ilustrativas.
+  </p>
 
 </main>
 
 <footer>
-<strong>OfertaTech © 2026</strong><br>
-Preços e produtos ilustrativos para demonstração.<br>
-Consulte as condições nas lojas antes de comprar.
+  <p>© 2026 OfertaTech - Tecnologia com preços que valem a pena.</p>
 </footer>
 
 <script>
-const search=document.getElementById("search");
-const cards=document.querySelectorAll(".card");
-const buttons=document.querySelectorAll(".categories button");
-const empty=document.getElementById("empty");
-let category="todos";
+const produtos = [
 
-function filter(){
-let term=search.value.toLowerCase();
-let visible=0;
+  // PRODUTOS MANTIDOS
 
-cards.forEach(card=>{
-let name=card.innerText.toLowerCase();
-let matchName=name.includes(term);
-let matchCategory=category==="todos" || card.dataset.category===category;
-let show=matchName && matchCategory;
-card.style.display=show?"":"none";
-if(show)visible++;
-});
-empty.style.display=visible?"none":"block";
+  {
+    nome: "Smartphone exemplo",
+    categoria: "celulares",
+    preco: "R$ 899,00",
+    loja: "Shopee",
+    imagem: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500",
+    link: ""
+  },
+  {
+    nome: "Celular exemplo Pro",
+    categoria: "celulares",
+    preco: "R$ 1.499,00",
+    loja: "Mercado Livre",
+    imagem: "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500",
+    link: ""
+  },
+  {
+    nome: "Carregador rápido",
+    categoria: "acessorios",
+    preco: "R$ 39,90",
+    loja: "Shopee",
+    imagem: "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=500",
+    link: ""
+  },
+  {
+    nome: "Bateria portátil",
+    categoria: "acessorios",
+    preco: "R$ 89,90",
+    loja: "Shopee",
+    imagem: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=500",
+    link: ""
+  },
+  {
+    nome: "Smartwatch exemplo",
+    categoria: "acessorios",
+    preco: "R$ 149,90",
+    loja: "Mercado Livre",
+    imagem: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500",
+    link: ""
+  },
+  {
+    nome: "Acessório para celular",
+    categoria: "acessorios",
+    preco: "R$ 29,90",
+    loja: "Shopee",
+    imagem: "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?w=500",
+    link: ""
+  },
+  {
+    nome: "Notebook exemplo",
+    categoria: "informatica",
+    preco: "R$ 2.499,00",
+    loja: "Mercado Livre",
+    imagem: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500",
+    link: ""
+  },
+  {
+    nome: "Teclado gamer",
+    categoria: "informatica",
+    preco: "R$ 99,90",
+    loja: "Shopee",
+    imagem: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500",
+    link: ""
+  },
+
+  // 7 FONES BLUETOOTH
+
+  {
+    nome: "Xiaomi Redmi Buds 6 Play",
+    categoria: "fones",
+    tipo: "Bluetooth",
+    preco: "A partir de R$ 78,00",
+    loja: "Amazon - consultar",
+    imagem: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500",
+    link: "https://www.amazon.com.br/s?k=Redmi+Buds+6+Play"
+  },
+  {
+    nome: "Soundcore P20i",
+    categoria: "fones",
+    tipo: "Bluetooth",
+    preco: "R$ 131,10",
+    loja: "Amazon",
+    imagem: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500",
+    link: "https://www.amazon.com.br/s?k=Soundcore+P20i"
+  },
+  {
+    nome: "Baseus Bass BP1 Pro",
+    categoria: "fones",
+    tipo: "Bluetooth",
+    preco: "R$ 179,55",
+    loja: "Baseus Brasil",
+    imagem: "https://images.unsplash.com/photo-1598331668826-20cecc596b86?w=500",
+    link: "https://www.google.com/search?q=Baseus+Bass+BP1+Pro+comprar"
+  },
+  {
+    nome: "QCY MeloBuds Pro HT08",
+    categoria: "fones",
+    tipo: "Bluetooth",
+    preco: "R$ 299,00",
+    loja: "QCY Brasil",
+    imagem: "https://images.unsplash.com/photo-1606220945770-b5b6c2c55bf1?w=500",
+    link: "https://qcy.com.br/pages/shopht08"
+  },
+  {
+    nome: "JBL Tune 520BT",
+    categoria: "fones",
+    tipo: "Bluetooth",
+    preco: "R$ 231,80",
+    loja: "Amazon",
+    imagem: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500",
+    link: "https://www.amazon.com.br/s?k=JBL+Tune+520BT"
+  },
+  {
+    nome: "Edifier W800BT Plus",
+    categoria: "fones",
+    tipo: "Bluetooth",
+    preco: "R$ 249,00",
+    loja: "Edifier Brasil",
+    imagem: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500",
+    link: "https://edifier.com.br/headphone-w800bt-plus-bluetooth-5-1-over-ear-edifier-preto.html"
+  },
+  {
+    nome: "QCY H3",
+    categoria: "fones",
+    tipo: "Bluetooth",
+    preco: "A partir de R$ 250,06",
+    loja: "Consultar oferta",
+    imagem: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500",
+    link: "https://qcy.com.br/pages/shoph3"
+  },
+
+  // 3 FONES COM FIO
+
+  {
+    nome: "JBL C50HI",
+    categoria: "fones",
+    tipo: "Com fio",
+    preco: "A partir de R$ 66,24",
+    loja: "Mercado Livre",
+    imagem: "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500",
+    link: "https://lista.mercadolivre.com.br/jbl-c50hi"
+  },
+  {
+    nome: "KZ EDX Pro",
+    categoria: "fones",
+    tipo: "Com fio",
+    preco: "A partir de R$ 63,90",
+    loja: "Mercado Livre",
+    imagem: "https://images.unsplash.com/photo-1590658165737-15a047b8e7e4?w=500",
+    link: "https://lista.mercadolivre.com.br/kz-edx-pro"
+  },
+  {
+    nome: "Sumexr SEJ-B1A",
+    categoria: "fones",
+    tipo: "Com fio",
+    preco: "R$ 25,90",
+    loja: "Magazine Luiza",
+    imagem: "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=500",
+    link: "https://www.google.com/search?q=Sumexr+SEJ-B1A+comprar"
+  }
+
+];
+
+const lista = document.getElementById("products");
+const pesquisa = document.getElementById("search");
+const vazio = document.getElementById("empty");
+const botoes = document.querySelectorAll(".categories button");
+
+let categoriaAtual = "todos";
+
+function mostrarProdutos() {
+  const termo = pesquisa.value.toLowerCase().trim();
+
+  const filtrados = produtos.filter(produto => {
+    const combinaCategoria =
+      categoriaAtual === "todos" ||
+      produto.categoria === categoriaAtual;
+
+    const texto = (
+      produto.nome + " " +
+      produto.categoria + " " +
+      (produto.tipo || "") + " " +
+      produto.loja
+    ).toLowerCase();
+
+    return combinaCategoria && texto.includes(termo);
+  });
+
+  lista.innerHTML = "";
+
+  filtrados.forEach(produto => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    const link = produto.link
+      ? `<a class="offer" href="${produto.link}" target="_blank" rel="noopener noreferrer">Ver oferta</a>`
+      : `<span class="offer coming">Link em breve</span>`;
+
+    card.innerHTML = `
+      <div class="photo">
+        <img
+          src="${produto.imagem}"
+          alt="${produto.nome}"
+          loading="lazy"
+          onerror="this.style.display='none'; this.parentElement.classList.add('no-image');"
+        >
+      </div>
+
+      <div class="info">
+        <h3>${produto.nome}</h3>
+        <p class="type">${produto.tipo || "Tecnologia"}</p>
+        <p class="price">${produto.preco}</p>
+        <p class="merchant">${produto.loja}</p>
+        ${link}
+      </div>
+    `;
+
+    lista.appendChild(card);
+  });
+
+  vazio.style.display = filtrados.length ? "none" : "block";
 }
 
-search.addEventListener("input",filter);
+botoes.forEach(botao => {
+  botao.addEventListener("click", () => {
+    botoes.forEach(b => b.classList.remove("active"));
+    botao.classList.add("active");
 
-buttons.forEach(button=>{
-button.addEventListener("click",()=>{
-buttons.forEach(b=>b.classList.remove("active"));
-button.classList.add("active");
-category=button.dataset.category;
-filter();
+    categoriaAtual = botao.dataset.category;
+    mostrarProdutos();
+  });
 });
-});
+
+pesquisa.addEventListener("input", mostrarProdutos);
+
+mostrarProdutos();
 </script>
 
 </body>
